@@ -5,6 +5,8 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Stepper from "./Stepper";
 import styles from "../../styles/Individual.module.css"
+import VerticalStepper from "./VerticalStepper";
+import OrganizationModal from "./Modals/OrganizationModal";
 
 const Individual = () => {
     
@@ -33,6 +35,8 @@ const Individual = () => {
 
     const [nextForm, setNextForm] = useState(false);
 
+    const [showOrganizationModal, setShowOrganizationModal] = useState(false);
+
     const rowsPerPage = 3;
     const totalPages = Math.ceil(individualDetails.length / rowsPerPage);
 
@@ -59,10 +63,10 @@ const Individual = () => {
     const handleFindOrganization = () => {
         setNextForm(false);
         setOrganizationDetails([
-            {name: "Билдинг", startTimeOfAccess: "08:00", endTimeOfAccess: "20:00", status: checkAccess("10:00", "20:00")},
-            {name: "Билдинг", startTimeOfAccess: "08:00", endTimeOfAccess: "20:00", status: checkAccess("10:00", "20:00")},
-            {name: "Билдинг", startTimeOfAccess: "08:00", endTimeOfAccess: "20:00", status: checkAccess("10:00", "20:00")},
-            {name: "Билдинг", startTimeOfAccess: "08:00", endTimeOfAccess: "20:00", status: checkAccess("10:00", "20:00")}
+            {id: 1, name: "Билдинг", startTimeOfAccess: "08:00", endTimeOfAccess: "20:00", status: checkAccess("10:00", "20:00")},
+            {id: 2, name: "Билдинг", startTimeOfAccess: "08:00", endTimeOfAccess: "20:00", status: checkAccess("10:00", "20:00")},
+            {id: 3, name: "Билдинг", startTimeOfAccess: "08:00", endTimeOfAccess: "20:00", status: checkAccess("10:00", "20:00")},
+            {id: 4, name: "Билдинг", startTimeOfAccess: "08:00", endTimeOfAccess: "20:00", status: checkAccess("10:00", "20:00")}
         ]);
     };
 
@@ -84,6 +88,10 @@ const Individual = () => {
         if(currentPage < totalPages){
             handleChangePage(currentPage + 1);
         }
+    };
+
+    const handleOrganizationClick = (id) => {
+        setShowOrganizationModal(true);
     };
 
     function checkAccess(startTimeOfAccess, endTimeOfAccess){
@@ -112,7 +120,7 @@ const Individual = () => {
         <div className={styles.row}>
             <div className="col-2">
                 <div className={styles.stepperContainer}>
-                    <Stepper stepCount={3} currentStep={0} stepLabels={['Физическое лицо', 'Транспортное средсто', 'Материальные ценности']}/>
+                    <VerticalStepper stepCount={3} currentStep={0} stepLabels={['Физическое лицо', 'Транспортное средсто', 'Материальные ценности']}/>
                 </div>
                 
             </div>
@@ -126,7 +134,7 @@ const Individual = () => {
                 <br/>
                 <Form.Check type="checkbox" label="На транспорте"/>
                 <br/>
-                {nextForm && <h2>Доступ разрещён</h2>}
+                {nextForm && <h2>Доступ разрешён</h2>}
                 <br/>
                 <Table>
                     <thead>
@@ -155,7 +163,7 @@ const Individual = () => {
                         <Pagination.Next onClick={handleNextPage}>Далее</Pagination.Next>
                     </Pagination>
                 <br/>
-                <Table>
+                <Table hover>
                     <thead>
                         <tr>
                             <th>Организация</th>
@@ -165,7 +173,7 @@ const Individual = () => {
                     </thead>
                     <tbody>
                         {organizationDetails.map((organizationDetail, index) => (
-                            <tr key={index}>
+                            <tr key={organizationDetail.id} onClick={() => handleOrganizationClick(organizationDetail.id)}>
                                 <td>{organizationDetail.name}</td>
                                 <td>C {organizationDetail.startTimeOfAccess} до {organizationDetail.endTimeOfAccess}</td>
                                 <td>{organizationDetail.status}</td>
@@ -176,6 +184,10 @@ const Individual = () => {
                 <Button disabled={!nextForm}>Далее</Button>
             </div>
         </div>
+        <OrganizationModal
+                show={showOrganizationModal}
+                onHide={() => setShowOrganizationModal(false)}
+            />
         </div>
     );
 }

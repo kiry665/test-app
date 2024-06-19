@@ -1,0 +1,57 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .step {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .line {
+    position: absolute;
+    width: 2px;
+    background-color:#f0f0f0;
+    height: 100%;
+    left: 19px;
+    z-index: 0;
+  }
+
+  .checked {
+    background-color: #007bff;
+  }
+  
+  .label {
+    font-size: 14px;
+    color: black;
+    width: 110px;
+    text-align: center;
+    margin-left: 5px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+ 
+
+  .step:last-child .line {
+    display: none;
+}
+  
