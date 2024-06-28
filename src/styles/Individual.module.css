@@ -28,6 +28,7 @@
 
 .button {
   float: right;
+  margin-bottom: 10px;
 }
 
 .searchClearButton {
@@ -53,7 +54,7 @@
   margin-bottom: 20px;
 }
 
-th, td {
+.th, .td {
   text-align: center;
 }
 

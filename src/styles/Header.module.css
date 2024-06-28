@@ -4,7 +4,7 @@
     background-color: black;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
 }
 
 .left, .right {
@@ -12,20 +12,17 @@
 }
 
 .leftButton {
-    display: flex;
-    justify-content: center;
+    display: flex !important;
+    height: 100% !important;
     align-items: center;
-    padding: 10px;
     float: left;
     background-color: black !important;
     border: 0 !important;
 }
 
-.icon {
-    font-size: 14;
-}
-
 .rightButton {
+    display: flex !important;
+    height: 100% !important;
     float: right;
     background-color: black !important;
     border: 0 !important;

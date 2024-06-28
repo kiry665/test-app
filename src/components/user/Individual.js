@@ -67,8 +67,8 @@ const Individual = () => {
     };
 
     const handleChangePage = (pageNumber) => {
-        setNextForm(false);
         if(currentPage !== pageNumber){
+            setNextForm(false);
             setCurrentPage(pageNumber);
             setOrganizationDetails([]);
         }
@@ -136,17 +136,17 @@ const Individual = () => {
                 <Table>
                     <thead>
                         <tr>
-                            <th>ФИО</th>
-                            <th>Паспорт</th>
+                            <th className={styles.th} style={{ width: '50%' }}>ФИО</th>
+                            <th className={styles.th}>Паспорт</th>
                         </tr>
                     </thead>
                     <tbody>
                         {currentRows.map((individualDetail, index) => (
                             <tr key={index}>
-                                <td>
+                                <td className={styles.td}>
                                     <Form.Check type="radio" key={individualDetail.id} name="individual" onChange={(e) => handleFindOrganization(e)} label={individualDetail.fio}/>
                                 </td>
-                                <td>{individualDetail.passport}</td>
+                                <td className={styles.td}>{individualDetail.passport}</td>
                             </tr>
                         ))}
                         {/* {currentRows.length < 3 && Array.from({ length: 3 - currentRows.length }).map((_, index) => (
@@ -169,17 +169,17 @@ const Individual = () => {
                 <Table hover>
                     <thead>
                         <tr>
-                            <th>Организация</th>
-                            <th>Время доступа</th>
-                            <th>Статус</th>
+                            <th className={styles.th} style={{ width: '33%' }}>Организация</th>
+                            <th className={styles.th}>Время доступа</th>
+                            <th className={styles.th}>Статус</th>
                         </tr>
                     </thead>
                     <tbody>
                         {organizationDetails.map((organizationDetail, index) => (
                             <tr key={organizationDetail.id} onClick={() => handleOrganizationClick(organizationDetail.id)}>
-                                <td>{organizationDetail.name}</td>
-                                <td>C {organizationDetail.startTimeOfAccess} до {organizationDetail.endTimeOfAccess}</td>
-                                <td>{organizationDetail.status}</td>
+                                <td className={styles.td}>{organizationDetail.name}</td>
+                                <td className={styles.td}>C {organizationDetail.startTimeOfAccess} до {organizationDetail.endTimeOfAccess}</td>
+                                <td className={styles.td}>{organizationDetail.status}</td>
                             </tr>
                         ))}
                     </tbody>

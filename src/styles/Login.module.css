@@ -1,0 +1,47 @@
+.container {
+    max-width: 400px; /* Максимальная ширина контейнера */
+    margin: auto; /* Автоматическое выравнивание по центру */
+    display: flex;
+    flex-direction: column; /* Расположение элементов в столбец */
+    align-items: center; /* Центрирование по горизонтали */
+    justify-content: center; /* Центрирование по вертикали */
+    height: calc(100vh - 40px);
+}
+
+.login, .password {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+.login label {
+    margin-bottom: 0px;
+    width: 80px;
+    text-align: center;
+    justify-content: center;
+}
+
+.password label {
+    margin-bottom: 0px;
+    width: 80px;
+    text-align: center;
+    justify-content: center;
+}
+
+.loginButton {
+    align-self: flex-end;
+}
+
+.showHideButton {
+    display: flex !important;
+    align-items: center;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: #ffffff; /* Цвет фона кнопки, соответствующий стилю строки поиска */
+    border-color: #dee2e6; /* Цвет рамки, соответствующий стилю строки поиска */
+    color: #6c757d;
+    border-left: none;
+}
