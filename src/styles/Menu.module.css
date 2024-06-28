@@ -1,0 +1,26 @@
+.verticalNavbar {
+    position: fixed;
+    top: 40px;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #4d4d4d;
+    transition: left 0.3s ease;
+    z-index: 1000;
+}
+
+.verticalNavbar.open {
+    left: 0;
+}
+
+.navLink {
+    color: white;
+}
+
+.navLink:hover {
+    color: #d1d1d1 !important; /* Цвет текста при наведении */
+}
+.navLink:focus,
+.navLink.active{
+    color: rgb(169, 169, 169) !important;
+}

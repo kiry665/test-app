@@ -1,9 +1,5 @@
 import { useState } from "react";
-import { Pagination, Table } from "react-bootstrap";
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Stepper from "./Stepper";
+import { Pagination, Table, Button, Form, InputGroup, Row, Col } from "react-bootstrap";
 import styles from "../../styles/Individual.module.css"
 import VerticalStepper from "./VerticalStepper";
 import OrganizationModal from "./Modals/OrganizationModal";
@@ -117,20 +113,21 @@ const Individual = () => {
 
     return(
         <div className={styles.container}>
-        <div className={styles.row}>
-            <div className="col-2">
+        <Row>
+            <Col md={2}>
                 <div className={styles.stepperContainer}>
                     <VerticalStepper stepCount={3} currentStep={0} stepLabels={['Физическое лицо', 'Транспортное средсто', 'Материальные ценности']}/>
                 </div>
-                
-            </div>
-            <div className="col-10">
-                <h1>Физическое лицо</h1>
-                <InputGroup>
-                    <Form.Control placeholder="ФИО" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}/>
-                    <Button variant="light" onClick={handleClear}>✕</Button>
-                    <Button variant="primary" title="Найти" onClick={handleFindIndividuals}>Найти</Button>
-                </InputGroup>
+            </Col>
+            <Col md={10}>
+                <h1 className={styles.h1}>Физическое лицо</h1>
+                <div className={styles.searchContainer}>
+                    <InputGroup>
+                        <Form.Control placeholder="ФИО" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}/>
+                        <Button className={styles.searchClearButton} variant="light" onClick={handleClear}>✕</Button>
+                    </InputGroup>
+                    <Button className={styles.searchButton} variant="primary" title="Найти" onClick={handleFindIndividuals}>Найти</Button>
+                </div>
                 <br/>
                 <Form.Check type="checkbox" label="На транспорте"/>
                 <br/>
@@ -152,16 +149,22 @@ const Individual = () => {
                                 <td>{individualDetail.passport}</td>
                             </tr>
                         ))}
+                        {/* {currentRows.length < 3 && Array.from({ length: 3 - currentRows.length }).map((_, index) => (
+                            <tr key={`empty-${index}`}>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        ))} */}
                     </tbody>
                 </Table>
                 <br/>
-                <Pagination>
-                        <Pagination.Prev onClick={handlePreviousPage}>Назад</Pagination.Prev>
-                        {Array.from({length: totalPages}, (_, index) => (
-                            <Pagination.Item key={index+1} active={index+1 === currentPage} onClick={() => handleChangePage(index+1)}>{index+1}</Pagination.Item>
-                        ))}
-                        <Pagination.Next onClick={handleNextPage}>Далее</Pagination.Next>
-                    </Pagination>
+                <Pagination className={styles.pagination}>
+                    <Pagination.Prev onClick={handlePreviousPage}>Назад</Pagination.Prev>
+                    {Array.from({length: totalPages}, (_, index) => (
+                        <Pagination.Item key={index+1} active={index+1 === currentPage} onClick={() => handleChangePage(index+1)}>{index+1}</Pagination.Item>
+                    ))}
+                    <Pagination.Next onClick={handleNextPage}>Далее</Pagination.Next>
+                </Pagination>
                 <br/>
                 <Table hover>
                     <thead>
@@ -181,9 +184,9 @@ const Individual = () => {
                         ))}
                     </tbody>
                 </Table>
-                <Button disabled={!nextForm}>Далее</Button>
-            </div>
-        </div>
+                <Button className={styles.button} disabled={!nextForm}>Далее</Button>
+            </Col>
+        </Row>
         <OrganizationModal
                 show={showOrganizationModal}
                 onHide={() => setShowOrganizationModal(false)}

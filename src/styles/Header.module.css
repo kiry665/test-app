@@ -1,0 +1,37 @@
+.Header {
+    height: 40px;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left, .right {
+    flex: 1;
+}
+
+.leftButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    float: left;
+    background-color: black !important;
+    border: 0 !important;
+}
+
+.icon {
+    font-size: 14;
+}
+
+.rightButton {
+    float: right;
+    background-color: black !important;
+    border: 0 !important;
+}
+
+.leftButton:hover, .rightButton:hover {
+    background-color: #424649 !important;
+}
+
