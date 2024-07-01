@@ -1,0 +1,18 @@
+.container {
+    max-width: 600px; /* Максимальная ширина контейнера */
+    margin: auto; /* Автоматическое выравнивание по центру */
+    display: flex;
+    flex-direction: column; /* Расположение элементов в столбец */
+    align-items: center; /* Центрирование по горизонтали */
+    justify-content: center; /* Центрирование по вертикали */
+    height: calc(100vh - 40px);
+}
+
+.h1 {
+    font-size: 96px;
+}
+
+.h2 {
+    text-align: center;
+    font-size: 32px;
+}

@@ -1,10 +1,12 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+
 import Header from './components/user/Header';
 import Individual from './components/user/Individual';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Menu from './components/user/Menu';
-import { useState } from "react";
 import Login from './components/user/Login';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Main from './components/user/Main';
 
 function App() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -15,22 +17,17 @@ function App() {
 
   return (
     <div className="App">
-      {/* <header>
-        <Header toggleMenu={toggleMenu}/>
-      </header>
-      <Individual/>
-      <Menu isOpen={isOpenMenu}/>
-      <Login></Login> */}
-
-      
       <Router>
         <Header toggleMenu={toggleMenu}/>
         <Routes>
-          <Route path="/" element={
+          <Route path="/check" element={
             <Individual></Individual>
           }/>
           <Route path="/auth" element={
             <Login></Login>
+          }/>
+          <Route path="/" element={
+            <Main></Main>
           }/>
         </Routes>
       </Router>

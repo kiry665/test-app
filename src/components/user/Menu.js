@@ -6,10 +6,10 @@ const Menu = ( {isOpen} ) => {
         <div className={`${styles.verticalNavbar} ${isOpen ? styles.open : ''}`}>
         <Nav className="flex-column" bg-body-tertiary>
             <Nav.Item>
-                <Nav.Link href="#" className={styles.navLink}>Главная</Nav.Link>
+                <Nav.Link href="/" className={styles.navLink}>Главная</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link href="#" className={styles.navLink}>Проверка доступа</Nav.Link>
+                <Nav.Link href="/check" className={styles.navLink}>Проверка доступа</Nav.Link>
             </Nav.Item>
             <Nav.Item>
                 <Nav.Link href="#" className={styles.navLink}>Доступ в ЗАТО</Nav.Link>
