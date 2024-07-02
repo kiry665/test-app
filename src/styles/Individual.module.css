@@ -54,14 +54,29 @@
   margin-bottom: 20px;
 }
 
+.h2 {
+  color: #007bff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .th, .td {
   text-align: center;
 }
 
-*:not(.table),
-*:not(.table) th,
-*:not(.table) td {
-    box-shadow: none !important;
-}
+/* :global(*) {
+  box-shadow: none !important;
+} */
+
+/* .table tbody tr:hover {
+  background-color: #f0f0f0 !important;
+} */
+
+/* :global(*:not(.table tbody tr:hover)) {
+  box-shadow: none !important;
+} */
+
+
+
 
   

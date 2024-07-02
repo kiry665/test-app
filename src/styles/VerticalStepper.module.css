@@ -49,8 +49,6 @@
     word-wrap: break-word;
   }
 
- 
-
   .step:last-child .line {
     display: none;
 }

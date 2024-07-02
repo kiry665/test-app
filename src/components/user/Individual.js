@@ -131,9 +131,9 @@ const Individual = () => {
                 <br/>
                 <Form.Check type="checkbox" label="На транспорте"/>
                 <br/>
-                {nextForm && <h2>Доступ разрешён</h2>}
+                {nextForm && <h2 className={styles.h2}>Доступ разрешён</h2>}
                 <br/>
-                <Table>
+                <Table bordered>
                     <thead>
                         <tr>
                             <th className={styles.th} style={{ width: '50%' }}>ФИО</th>
@@ -166,7 +166,7 @@ const Individual = () => {
                     <Pagination.Next onClick={handleNextPage}>Далее</Pagination.Next>
                 </Pagination>
                 <br/>
-                <Table hover>
+                <Table hover bordered>
                     <thead>
                         <tr>
                             <th className={styles.th} style={{ width: '33%' }}>Организация</th>
