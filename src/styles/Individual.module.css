@@ -1,3 +1,7 @@
+*:not(table):not(th):not(td) {
+  box-shadow: none !important;
+}
+
 .container {
   height: 90vh;
   padding-top: 5vh; /* Отступ сверху */
