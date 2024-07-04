@@ -25,6 +25,8 @@ const Individual = () => {
 
     const [searchQuery, setSearchQuery] = useState("");
 
+    const [onTransport, setOnTransport] = useState(false);
+
     const [organizationDetails, setOrganizationDetails] = useState([]);
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -43,6 +45,7 @@ const Individual = () => {
     const handleClear = () => {
         setCurrentPage(1);
         setSearchQuery("");
+        setOnTransport(false);
         setIndividualDetails([]);
         setOrganizationDetails([]);
         setNextForm(false);
@@ -55,6 +58,10 @@ const Individual = () => {
         setIndividualDetails(filteredDetails);
         setCurrentPage(1);
     };
+
+    const handleChangeOnTransport = () => {
+        setOnTransport(!onTransport);
+    }
 
     const handleFindOrganization = () => {
         setNextForm(false);
@@ -129,7 +136,7 @@ const Individual = () => {
                     <Button className={styles.searchButton} variant="primary" title="Найти" onClick={handleFindIndividuals}>Найти</Button>
                 </div>
                 <br/>
-                <Form.Check type="checkbox" label="На транспорте"/>
+                <Form.Check type="checkbox" checked= {onTransport} onChange={handleChangeOnTransport} label="На транспорте"/>
                 <br/>
                 {nextForm && <h2 className={styles.h2}>Доступ разрешён</h2>}
                 <br/>

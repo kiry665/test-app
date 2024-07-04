@@ -10,9 +10,8 @@ function OrganizationModal({show, onHide}){
 
     return(
         <Modal show={show} onHide={onHide}>
-        <Modal.Dialog>
-            <Modal.Body>
-                <h1>Основание для допуска</h1>
+            <div className={styles.container}>
+                <h1 className={styles.h1}>Основание для допуска</h1>
                 <br></br>
                 <Table bordered>
                     <tbody>
@@ -25,8 +24,8 @@ function OrganizationModal({show, onHide}){
                     </tbody>
                 </Table>
                 <Button className={styles.button} variant="primary" onClick={onHide}>Закрыть</Button>
-            </Modal.Body>
-        </Modal.Dialog>
+            </div>
+        
         </Modal>
     );
 }
