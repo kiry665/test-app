@@ -63,8 +63,9 @@ const Individual = () => {
         setOnTransport(!onTransport);
     }
 
-    const handleFindOrganization = () => {
+    const handleFindOrganization = (id) => {
         setNextForm(false);
+        
         setOrganizationDetails([
             {id: 1, name: "Билдинг", startTimeOfAccess: "08:00", endTimeOfAccess: "20:00", status: checkAccess("10:00", "20:00")},
             {id: 2, name: "Билдинг", startTimeOfAccess: "08:00", endTimeOfAccess: "20:00", status: checkAccess("10:00", "20:00")},
@@ -136,7 +137,7 @@ const Individual = () => {
                     <Button className={styles.searchButton} variant="primary" title="Найти" onClick={handleFindIndividuals}>Найти</Button>
                 </div>
                 <br/>
-                <Form.Check type="checkbox" checked= {onTransport} onChange={handleChangeOnTransport} label="На транспорте"/>
+                <Form.Check id="onTransport" type="checkbox" checked= {onTransport} onChange={handleChangeOnTransport} label="На транспорте"/>
                 <br/>
                 {nextForm && <h2 className={styles.h2}>Доступ разрешён</h2>}
                 <br/>
@@ -151,7 +152,7 @@ const Individual = () => {
                         {currentRows.map((individualDetail, index) => (
                             <tr key={index}>
                                 <td className={styles.td}>
-                                    <Form.Check type="radio" key={individualDetail.id} name="individual" onChange={(e) => handleFindOrganization(e)} label={individualDetail.fio}/>
+                                    <Form.Check type="radio" key={individualDetail.id} name="individual" onChange={() => handleFindOrganization(individualDetail.id)} label={individualDetail.fio}/>
                                 </td>
                                 <td className={styles.td}>{individualDetail.passport}</td>
                             </tr>
