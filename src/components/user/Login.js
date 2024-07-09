@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import { React, useState } from 'react';
 import { Form, Button, InputGroup } from 'react-bootstrap';
+import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import styles from "../../styles/Login.module.css"
 import Cookies from 'js-cookie';
 import config from '../../config';
 import axios from 'axios';
 import { useAuth } from '../../AuthContext';
-import { useNavigate } from "react-router-dom";
+
 
 const Login = () => {
   const [login, setLLogin] = useState('');
