@@ -6,11 +6,13 @@ import Cookies from 'js-cookie';
 import config from '../../config';
 import axios from 'axios';
 import { useAuth } from '../../AuthContext';
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [login, setLLogin] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const { auth } = useAuth();
 
@@ -41,7 +43,7 @@ const Login = () => {
 
       // clearMessages();
       // setSuccessMessage('You are login')
-      // navigate("/")
+      navigate("/")
       // handleLogin();
     } catch (error) {
       // clearMessages();
