@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Form, Button, InputGroup } from 'react-bootstrap';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import styles from "../../styles/Login.module.css"
+import Cookies from 'js-cookie';
+import config from '../../config';
+import axios from 'axios';
 
 const Login = () => {
   const [login, setLLogin] = useState('');
@@ -12,8 +15,38 @@ const Login = () => {
     setShowPassword(!showPassword);
   };
 
+  const onSubmitLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(`${config.apiUrl}/auth/login`, {
+        login: login,
+        password: password
+      }, {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        responseType: 'json'
+      });
+
+      const token = response.data.token;
+      const expires = new Date(response.data.expires)
+
+      Cookies.set('token', token, { expires: expires });
+      Cookies.set('login', login, { expires: expires });
+
+      // clearMessages();
+      // setSuccessMessage('You are login')
+      // navigate("/")
+      // handleLogin();
+    } catch (error) {
+      // clearMessages();
+      // setErrorMessage('Login Failed')
+    }
+  };
+
   return (
     <div className={styles.container}>
+      <Form onSubmit={onSubmitLogin}>
         <Form.Group className={styles.login}>
             <Form.Label>Логин</Form.Label>
             <InputGroup>
@@ -40,7 +73,8 @@ const Login = () => {
                 </Button>
             </InputGroup>
         </Form.Group>
-        <Button className={styles.loginButton}>Войти</Button>
+        <Button className={styles.loginButton} type="submit">Войти</Button>
+      </Form>
     </div>
     
   );

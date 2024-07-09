@@ -32,7 +32,7 @@
 }
 
 .loginButton {
-    align-self: flex-end;
+    align-self: flex-end !important;
 }
 
 .showHideButton {
