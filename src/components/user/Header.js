@@ -2,15 +2,20 @@ import React from 'react';
 import styles from "../../styles/Header.module.css"
 import { Button } from 'react-bootstrap';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+import {useAuth} from "../../AuthContext"; 
 
 const Header = ({toggleMenu}) => {
 
     const navigate = useNavigate();
+    const { isAuthenticated, logout } = useAuth();
 
-    const handleLogin = () => {
-        navigate("/auth")
+    const handleLoginLogout = () => {
+        if (isAuthenticated) {
+            logout();
+        } else {
+            navigate("/login");
+        }
     }
 
     return (
@@ -21,7 +26,7 @@ const Header = ({toggleMenu}) => {
                 </Button>
             </div>
             <div className={styles.right}>
-                <Button className={styles.rightButton} onClick={handleLogin} variant="dark">Войти</Button>
+                <Button className={styles.rightButton} onClick={handleLoginLogout} variant="dark">{isAuthenticated ? "Выйти" : "Войти"}</Button>
             </div>
         </div>
     );
