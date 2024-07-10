@@ -10,6 +10,7 @@ import LoginPage from './views/user/LoginPage';
 import HomePage from './views/user/HomePage';
 import {AuthProvider} from './AuthContext';
 import ProtectedRoute from './ProtectedRoute';
+import WatchmanPage from './views/user/WatchmanPage';
 
 function App() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -24,7 +25,7 @@ function App() {
         <Header toggleMenu={toggleMenu}/>
         <Routes>
           <Route path="/check" element={
-            <Individual></Individual>
+            <WatchmanPage></WatchmanPage>
           }/>
           <Route path="/login" element={
             <LoginPage></LoginPage>

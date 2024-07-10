@@ -1,0 +1,28 @@
+  
+  *:not(table):not(th):not(td) {
+    box-shadow: none !important;
+  }
+
+  .container {
+    height: 90vh;
+    padding-top: 5vh; /* Отступ сверху */
+    padding-bottom: 5vh; /* Отступ снизу */
+    padding-right: 10vb;
+    align-items: center;
+  }
+
+  .row {
+    flex: 1; /* Растягиваем строку по всей высоте контейнера */
+    display: flex; /* Используем flexbox для выравнивания и распределения содержимого */
+    align-items: stretch; /* Вытягиваем элементы строки по высоте */
+  }
+  
+  .stepperContainer {
+    height: 80vh; /* 80% высоты экрана */
+    display: flex;
+    align-items: center; /* Центрирование по вертикали */
+    justify-content: center; /* Центрирование по горизонтали */
+    flex-direction: column; /* Выравнивание элементов в колонку */
+    padding-top: 10vh; /* Отступ сверху */
+    padding-bottom: 10vh; /* Отступ снизу */
+  }

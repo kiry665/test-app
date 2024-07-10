@@ -90,77 +90,64 @@ const Individual = () => {
     };
 
     return(
-        <div className={styles.container}>
-        <Row>
-            <Col md={2}>
-                <div className={styles.stepperContainer}>
-                    <VerticalStepper stepCount={3} currentStep={0} stepLabels={['Физическое лицо', 'Транспортное средсто', 'Материальные ценности']}/>
-                </div>
-            </Col>
-            <Col md={10}>
-                <h1 className={styles.h1}>Физическое лицо</h1>
-                <SearchBar
-                    placeholder={"ФИО"}
-                    searchQuery={searchQuery} 
-                    setSearchQuery={setSearchQuery} 
-                    handleClear={handleClear} 
-                    handleFind={handleFindIndividuals}
-                />
-                <br/>
-                <Form.Check id="onTransport" type="checkbox" checked= {onTransport} onChange={handleChangeOnTransport} label="На транспорте"/>
-                <br/>
-                {nextForm && <h2 className={styles.h2}>Доступ разрешён</h2>}
-                <br/>
-                <DataTableRadio
-                    columns={[
-                        {
-                          header: 'ФИО',
-                          accessor: 'fio',
-                          style: { width: '50%' },
-                        },
-                        {
-                          header: 'Паспорт',
-                          accessor: 'passport',
-                        },
-                      ]}
-                    data={currentRows}
-                    onRowSelect={handleFindOrganization}
-                />
-                <br/>
-                <Pagination
-                    handleChangePage={handleChangePage}
-                    totalPages={totalPages}
-                    currentPage={currentPage}
-                />
-                <br/>
-                <DataTableHover
-                    columns={[
-                        { 
-                            header: 'Организация', 
-                            accessor: 'name', 
-                            style: { width: '33%' } 
-                        },
-                        { 
-                            header: 'Время доступа', 
-                            accessor: 'accessTime', 
-                            style: {} 
-                        },
-                        { 
-                            header: 'Статус', 
-                            accessor: 'status', 
-                            style: {} 
-                        }
-                    ]}
-                    data={organizationDetails}
-                    onRowClick={handleOrganizationClick}
-                />
-                <Button className={styles.button} disabled={!nextForm}>Далее</Button>
-            </Col>
-        </Row>
-        <OrganizationModal
-                show={showOrganizationModal}
-                onHide={() => setShowOrganizationModal(false)}
+        <div>
+            <h1 className={styles.h1}>Физическое лицо</h1>
+            <SearchBar
+                placeholder={"ФИО"}
+                searchQuery={searchQuery} 
+                setSearchQuery={setSearchQuery} 
+                handleClear={handleClear} 
+                handleFind={handleFindIndividuals}
             />
+            <br/>
+            <Form.Check id="onTransport" type="checkbox" checked= {onTransport} onChange={handleChangeOnTransport} label="На транспорте"/>
+            <br/>
+            {nextForm && <h2 className={styles.h2}>Доступ разрешён</h2>}
+            <br/>
+            <DataTableRadio
+                columns={[
+                    {
+                        header: 'ФИО',
+                        accessor: 'fio',
+                        style: { width: '50%' },
+                    },
+                    {
+                        header: 'Паспорт',
+                        accessor: 'passport',
+                    },
+                    ]}
+                data={currentRows}
+                onRowSelect={handleFindOrganization}
+            />
+            <br/>
+            <Pagination
+                handleChangePage={handleChangePage}
+                totalPages={totalPages}
+                currentPage={currentPage}
+            />
+            <br/>
+            <DataTableHover
+                columns={[
+                    { 
+                        header: 'Организация', 
+                        accessor: 'name', 
+                        style: { width: '33%' } 
+                    },
+                    { 
+                        header: 'Время доступа', 
+                        accessor: 'accessTime', 
+                        style: {} 
+                    },
+                    { 
+                        header: 'Статус', 
+                        accessor: 'status', 
+                        style: {} 
+                    }
+                ]}
+                data={organizationDetails}
+                onRowClick={handleOrganizationClick}
+            />
+            <Button className={styles.button} disabled={!nextForm}>Далее</Button>
         </div>
     );
 }
