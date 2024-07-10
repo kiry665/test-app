@@ -9,7 +9,7 @@ import axios from 'axios';
 import { useAuth } from '../../AuthContext';
 
 
-const Login = () => {
+const LoginPage = () => {
   const [login, setLLogin] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -37,18 +37,11 @@ const Login = () => {
       const token = response.data.token;
       const expires = new Date(response.data.expires)
 
-      // Cookies.set('token', token, { expires: expires });
       auth(token, expires);
       Cookies.set('login', login, { expires: expires });
-      
-
-      // clearMessages();
-      // setSuccessMessage('You are login')
       navigate("/")
-      // handleLogin();
     } catch (error) {
-      // clearMessages();
-      // setErrorMessage('Login Failed')
+      
     }
   };
 
@@ -88,4 +81,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;

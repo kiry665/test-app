@@ -26,31 +26,10 @@
   padding-bottom: 10vh; /* Отступ снизу */
 }
 
-.pagination {
-  float: right!important;
-}
 
 .button {
   float: right;
   margin-bottom: 10px;
-}
-
-.searchClearButton {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  background-color: #ffffff; /* Цвет фона кнопки, соответствующий стилю строки поиска */
-  border-color: #dee2e6; /* Цвет рамки, соответствующий стилю строки поиска */
-  color: #6c757d;
-  border-left: none;
-}
-
-.searchContainer {
-  display: flex;
-  align-items: flex-end;
-}
-
-.searchButton {
-  margin-left: 10px;
 }
 
 .h1 {
@@ -67,18 +46,6 @@
 .th, .td {
   text-align: center;
 }
-
-/* :global(*) {
-  box-shadow: none !important;
-} */
-
-/* .table tbody tr:hover {
-  background-color: #f0f0f0 !important;
-} */
-
-/* :global(*:not(.table tbody tr:hover)) {
-  box-shadow: none !important;
-} */
 
 
 

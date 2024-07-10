@@ -1,0 +1,17 @@
+.searchClearButton {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: #ffffff; /* Цвет фона кнопки, соответствующий стилю строки поиска */
+    border-color: #dee2e6; /* Цвет рамки, соответствующий стилю строки поиска */
+    color: #6c757d;
+    border-left: none;
+}
+
+.searchContainer {
+    display: flex;
+    align-items: flex-end;
+}
+
+.searchButton {
+    margin-left: 10px;
+}

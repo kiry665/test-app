@@ -6,8 +6,8 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Header from './components/user/Header';
 import Individual from './components/user/Individual';
 import Menu from './components/user/Menu';
-import Login from './components/user/Login';
-import Main from './components/user/Main';
+import LoginPage from './views/user/LoginPage';
+import HomePage from './views/user/HomePage';
 import {AuthProvider} from './AuthContext';
 import ProtectedRoute from './ProtectedRoute';
 
@@ -24,13 +24,13 @@ function App() {
         <Header toggleMenu={toggleMenu}/>
         <Routes>
           <Route path="/check" element={
-            <ProtectedRoute element={<Individual/>}/>
+            <Individual></Individual>
           }/>
           <Route path="/login" element={
-            <Login></Login>
+            <LoginPage></LoginPage>
           }/>
           <Route path="/" element={
-            <Main></Main>
+            <HomePage></HomePage>
           }/>
         </Routes>
       </Router>
