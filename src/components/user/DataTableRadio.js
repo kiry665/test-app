@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Pagination, Table, Button, Form, InputGroup, Row, Col } from "react-bootstrap";
 import styles from '../../styles/DataTable.module.css';
 
-const DataTableRadio = ({ columns, data, onRowSelect }) => {
-    const [selectedId, setSelectedId] = useState(null);
+const DataTableRadio = ({ columns, data, onRowSelect, selectedId, setSelectedId, radioAccessor }) => {
+    // const [selectedId, setSelectedId] = useState(null);
   
     const handleRowClick = (id) => {
       setSelectedId(id);
@@ -27,7 +27,7 @@ const DataTableRadio = ({ columns, data, onRowSelect }) => {
                 <tr key={rowIndex}>
                 {columns.map((column, colIndex) => (
                     <td key={colIndex} className={styles.td}>
-                    {column.accessor === 'fio' ? (
+                    {column.accessor === radioAccessor ? (
                         <Form.Check
                         type="radio"
                         name="dataTableRadio"

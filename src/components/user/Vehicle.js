@@ -7,22 +7,14 @@ import DataTableRadio from "./DataTableRadio";
 import Pagination from "./Pagination";
 import DataTableHover from "./DataTableHover";
 
-const Individual = () => {
-    
-    const [individualDetailsAll, setIndividualDetailsAll] = useState([
-        {id: "1", fio: "Иванов Иван Иванович", passport: "1234 567890" },
-        {id: "2", fio: "Петров Петр Петрович", passport: "2345 678901" },
-        {id: "3", fio: "Сидоров Сидор Сидорович", passport: "3456 789012" },
-        {id: "4", fio: "Кузнецов Алексей Андреевич", passport: "4567 890123" },
-        {id: "5", fio: "Смирнова Мария Ивановна", passport: "5678 901234" },
-        {id: "6", fio: "Васильев Дмитрий Сергеевич", passport: "6789 012345" },
-        {id: "7", fio: "Михайлова Ольга Петровна", passport: "7890 123456" },
-        {id: "8", fio: "Фёдоров Виктор Николаевич", passport: "8901 234567" },
-        {id: "9", fio: "Дмитриева Анна Васильевна", passport: "9012 345678" },
-        {id: "10", fio: "Борисов Максим Александрович", passport: "0123 456789"}
+const Vehicle = () => {
+
+    const [VehiclesAll, setVehiclesAll] = useState([
+        {id: "1", name: "Камаз", number: "А111АА96" },
+        {id: "1", name: "Камаз", number: "А999АА96" }
     ]);
 
-    const [individualDetails, setIndividualDetails] = useState([]);
+    const [VehicleDetails, setVehicleDetails] = useState([]);
 
     const [searchQuery, setSearchQuery] = useState("");
 
@@ -38,23 +30,23 @@ const Individual = () => {
 
     const [showOrganizationModal, setShowOrganizationModal] = useState(false);
 
-    const [selectedIndividualId, setSelectedIndividualId] = useState(null);
+    const [selectedVehicleId, setSelectedVehicleId] = useState(null);
 
     const rowsPerPage = 3;
-    const totalPages = Math.ceil(individualDetails.length / rowsPerPage);
+    const totalPages = Math.ceil(VehicleDetails.length / rowsPerPage);
 
     const indexOfLastRow = currentPage * rowsPerPage;
     const indexOfFirstRow = indexOfLastRow - rowsPerPage;
-    const currentRows = individualDetails.slice(indexOfFirstRow, indexOfLastRow);
+    const currentRows = VehicleDetails.slice(indexOfFirstRow, indexOfLastRow);
 
     const handleClear = () => {
         setCurrentPage(1);
         setSearchQuery("");
         setOnTransport(false);
-        setIndividualDetails([]);
+        setVehicleDetails([]);
         setOrganizationDetails([]);
         setNextForm(false);
-        setSelectedIndividualId(null);
+        setSelectedVehicleId(null);
         setShowAccess(false);
     };
 
@@ -63,14 +55,14 @@ const Individual = () => {
     }
 
     //получить из API
-    const handleFindIndividuals = () => {
-        const filteredDetails = individualDetailsAll.filter(individual =>
-            individual.fio.toLowerCase().includes(searchQuery.toLowerCase())
+    const handleFindVehicles = () => {
+        const filteredDetails = VehiclesAll.filter(vehicle =>
+            vehicle.number.toLowerCase().includes(searchQuery.toLowerCase())
         );
         if(filteredDetails.length == 0){
             setShowAccess(true);
         }
-        setIndividualDetails(filteredDetails);
+        setVehicleDetails(filteredDetails);
         setCurrentPage(1);
     };
 
@@ -91,7 +83,7 @@ const Individual = () => {
             setNextForm(false);
             setCurrentPage(pageNumber);
             setOrganizationDetails([]);
-            setSelectedIndividualId(null);
+            setSelectedVehicleId(null);
         }
     };
 
@@ -102,15 +94,14 @@ const Individual = () => {
 
     return(
         <div>
-            <h1 className={styles.h1}>Физическое лицо</h1>
+            <h1 className={styles.h1}>Автотранспорт</h1>
             <SearchBar
-                placeholder={"ФИО"}
+                placeholder={"Номер ТС"}
                 searchQuery={searchQuery} 
                 setSearchQuery={setSearchQuery} 
                 handleClear={handleClear} 
-                handleFind={handleFindIndividuals}
+                handleFind={handleFindVehicles}
             />
-            <Form.Check id="onTransport" type="checkbox" checked= {onTransport} onChange={handleChangeOnTransport} label="На транспорте"/>
             <br/>
             {showAccess ? (
                 nextForm ? (
@@ -123,20 +114,20 @@ const Individual = () => {
             <DataTableRadio
                 columns={[
                     {
-                        header: 'ФИО',
-                        accessor: 'fio',
+                        header: 'Название транспортного средства',
+                        accessor: 'name',
                         style: { width: '50%' },
                     },
                     {
-                        header: 'Паспорт',
-                        accessor: 'passport',
-                    }
+                        header: 'Номер',
+                        accessor: 'number',
+                    },
                     ]}
                 data={currentRows}
                 onRowSelect={handleFindOrganization}
-                selectedId={selectedIndividualId}
-                setSelectedId={setSelectedIndividualId}
-                radioAccessor= 'fio'
+                selectedId={selectedVehicleId}
+                setSelectedId={setSelectedVehicleId}
+                radioAccessor= 'name'
             />
             <Pagination
                 handleChangePage={handleChangePage}
@@ -173,4 +164,4 @@ const Individual = () => {
     );
 }
 
-export default Individual;
+export default Vehicle;

@@ -1,15 +1,16 @@
-.button {
-  float: right;
-  margin-bottom: 10px;
-}
-
 .h1 {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.h2 {
+.allowed {
   color: #007bff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.forbidden {
+  color: #ed0000;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -17,6 +18,19 @@
 .th, .td {
   text-align: center;
 }
+
+.select {
+  width: 33%;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.inline {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
 
 
 

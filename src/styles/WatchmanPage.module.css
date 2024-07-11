@@ -26,3 +26,8 @@
     padding-top: 10vh; /* Отступ сверху */
     padding-bottom: 10vh; /* Отступ снизу */
   }
+
+  .button {
+    float: right;
+    margin-bottom: 10px;
+  }
