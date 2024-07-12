@@ -1,7 +1,7 @@
 import styles from "../../styles/DataTable.module.css";
 import { Table } from "react-bootstrap";
 
-const DataTable = ({ columns, data, onRowClick }) => {
+const DataTable = ({ columns, data }) => {
     return(
         <Table bordered>
             <thead>
@@ -15,7 +15,7 @@ const DataTable = ({ columns, data, onRowClick }) => {
             </thead>
             <tbody>
                 {data.map((row, rowIndex) => (
-                    <tr key={row.id} onClick={() => onRowClick(row.id)}>
+                    <tr key={row.id}>
                         {columns.map((column, colIndex) => (
                         <td key={colIndex} className={styles.td}>
                             {row[column.accessor]}
