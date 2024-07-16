@@ -25,7 +25,9 @@ function App() {
         <Header toggleMenu={toggleMenu}/>
         <Routes>
           <Route path="/check" element={
-            <WatchmanPage></WatchmanPage>
+            <ProtectedRoute element={
+              <WatchmanPage></WatchmanPage>
+            }/>
           }/>
           <Route path="/login" element={
             <LoginPage></LoginPage>
